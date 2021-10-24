@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.0",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
     "expo": "^43.0.0",
     "expo-battery": "~6.0.3",
     "expo-checkbox": "~2.0.0",
