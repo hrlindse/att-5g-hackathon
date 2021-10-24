@@ -4,7 +4,8 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { FIREBASE_API_KEY, FIREBASE_SENDER_ID, FIREBASE_APP_ID } from "@env";
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
-import { Barometer } from "expo-sensors";
+// import { Barometer } from "expo-sensors";
+// import Barometer from "react-native-barometer";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -45,56 +46,47 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export default function App() {
-  const [data, setData] = useState({});
+  // const isSupported = Barometer.isSupported();
 
-  // Subscribe for updates to the barometer.
-  useEffect(() => {
-    _toggle();
-  }, []);
+  // var barPayload = 0;
+  // var barPressure = 0;
+  // var barStandardAlt = 0;
+  // var barLocalAlt = 0;
+  // var barRelativeAlt = 0;
+  // var barVerticalSpeed = 0;
 
-  useEffect(() => {
-    return () => {
-      _unsubscribe();
-    };
-  }, []);
-
-  const _toggle = () => {
-    if (this._subscription) {
-      _unsubscribe();
-    } else {
-      _subscribe();
-    }
-  };
-
-  const _subscribe = () => {
-    this._subscription = Barometer.addListener((barometerData) => {
-      setData(barometerData);
-    });
-  };
-
-  const _unsubscribe = () => {
-    this._subscription && this._subscription.remove();
-    this._subscription = null;
-  };
-  const { pressure = 0, relativeAltitude = 0, verticalSpeed = 0 } = data;
+  // if barometer is supported
+  // if (isSupported) {
+  // const watchId = Barometer.watch((payload) => {
+  //   barPayload = payload.timestamp;
+  //   barPressure = payload.pressure;
+  //   barStandardAlt = payload.altitudeASL;
+  //   barLocalAlt = payload.altitude;
+  //   barRelativeAlt = payload.relativeAltitude;
+  //   barVerticalSpeed = payload.verticalSpeed;
+  // });
+  // // request updates once every second
+  // Barometer.setInterval(1000);
+  // Barometer.watch(success);
+  // }
 
   return (
     <View style={styles.container}>
       <Text>Journey test page!</Text>
       <StatusBar style="auto" />
       <Text>Barometer:</Text>
-      <Text>Pressure: {pressure * 100} Pa</Text>
-      <Text>Vertical speed: {verticalSpeed}</Text>
+      {/* <Text>Pressure: {pressure * 100} Pa</Text> */}
+      {/* <Text>Vertical speed: {barVerticalSpeed}</Text> */}
       <Text>
         Relative Altitude:{" "}
-        {Platform.OS === "ios"
+        {/* {Platform.OS === "ios"
           ? `${relativeAltitude} m`
-          : `Only available on iOS`}
+          : `Only available on iOS`} */}
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={_toggle} style={styles.button}>
+        {/* <TouchableOpacity onPress={_toggle} style={styles.button}>
           <Text>Toggle</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );
