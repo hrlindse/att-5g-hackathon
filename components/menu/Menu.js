@@ -1,29 +1,33 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, TouchableOpacity, Text, View, Image } from "react-native";
+import { StyleSheet, Image, TouchableOpacity, Text, View } from "react-native";
 import React from "react";
 import theme from "../../assets/styles/theme.style.js";
 import { commonStyles } from "../../assets/styles/styles";
 import ActionButton from "../buttons/ActionButton";
 import MenuItem from "./MenuItem";
 
-export default function Menu() {
+export default function Menu({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={commonStyles.topBarContainer}>
         <View style={commonStyles.topBar}>
           <View></View>
           <Text style={commonStyles.heading}>Menu</Text>
-          <Image
-            style={styles.close}
-            source={require("../../assets/images/close.png")}
-          ></Image>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              style={styles.close}
+              source={require("../../assets/images/close.png")}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.items}>
-        <MenuItem
-          uri={require("../../assets/images/locate.png")}
-          text="Locate your friends and family"
-        ></MenuItem>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <MenuItem
+            uri={require("../../assets/images/locate.png")}
+            text="Locate your friends and family"
+          ></MenuItem>
+        </TouchableOpacity>
         <MenuItem
           uri={require("../../assets/images/light.png")}
           text="Flash a light to guide your friend"

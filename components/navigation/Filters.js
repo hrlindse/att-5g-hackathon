@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, TouchableOpacity, Text, View, Image } from "react-native";
 import theme from "../../assets/styles/theme.style.js";
 import { commonStyles } from "../../assets/styles/styles";
 import ActionButton from "../buttons/ActionButton";
 import Filter from "./Filter";
 
-export default function Filters() {
+export default function Filters({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={commonStyles.topBarContainer}>
         <View style={commonStyles.topBar}>
           <View></View>
           <Text style={commonStyles.heading}>Filter Locations</Text>
-          <Image
-            style={styles.close}
-            source={require("../../assets/images/close.png")}
-          ></Image>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              style={styles.close}
+              source={require("../../assets/images/close.png")}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.filters}>

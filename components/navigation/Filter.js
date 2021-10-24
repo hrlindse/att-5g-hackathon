@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, TouchableOpacit, Text, View } from "react-native";
 import Checkbox from "expo-checkbox";
 import theme from "../../assets/styles/theme.style.js";
 
