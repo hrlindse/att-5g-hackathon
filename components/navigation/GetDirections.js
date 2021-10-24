@@ -12,23 +12,23 @@ export default function GetDirections() {
         <Image
           style={styles.mic}
           source={require("../../assets/images/microphone.png")}
-        ></Image>
+        />
       </View>
       <View style={styles.textbox}>
         <Text style={styles.destination}>Enter seat number</Text>
         <Image
           style={styles.mic}
           source={require("../../assets/images/microphone.png")}
-        ></Image>
+        />
       </View>
-      {/* TODO get directions button */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
+    marginHorizontal: 10,
     backgroundColor: "#fff",
     shadowOffset: 4,
     shadowColor: theme.FONT_COLOR,

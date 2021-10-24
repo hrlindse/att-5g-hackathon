@@ -6,17 +6,19 @@ import { commonStyles } from "../assets/styles/styles";
 import ActionButton from "./buttons/ActionButton";
 import MenuItem from "./menu/MenuItem";
 
-export default function SOS() {
+export default function SOS({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={commonStyles.topBarContainer}>
         <View style={commonStyles.topBar}>
           <View></View>
           <Text style={commonStyles.heading}>Emergency Services</Text>
-          <Image
-            style={styles.close}
-            source={require("../assets/images/close.png")}
-          ></Image>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              style={styles.close}
+              source={require("../assets/images/close.png")}
+            />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.items}>

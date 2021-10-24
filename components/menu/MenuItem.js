@@ -9,7 +9,7 @@ export default function MenuItem(props) {
   //   const source = require(props.uri);
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={props.uri}></Image>
+      <Image style={styles.image} source={props.uri} />
       <Text style={styles.text}>{props.text}</Text>
     </View>
   );

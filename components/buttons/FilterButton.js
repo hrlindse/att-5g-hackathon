@@ -8,7 +8,7 @@ export default function FilterButton() {
       <Image
         style={styles.filter}
         source={require("../../assets/images/filter.png")}
-      ></Image>
+      />
     </View>
   );
 }

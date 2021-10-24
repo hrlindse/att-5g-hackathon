@@ -7,7 +7,7 @@ export default function HamburgerButton() {
       <Image
         style={styles.image}
         source={require("../../assets/images/hamburger.png")}
-      ></Image>
+      />
     </View>
   );
 }
