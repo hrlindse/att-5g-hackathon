@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 import {
   SmartMapView,
@@ -13,7 +13,10 @@ export default function Map() {
   //   SmartMapManager.start(SMARTMAP_API_KEY);
   return (
     <View style={styles.container}>
-      <Text>Map test page!</Text>
+      <Image
+        style={styles.image}
+        source={require("../assets/images/Lucas-oil-level-1-bw.png")}
+      />
       {/* <StatusBar style="auto" /> */}
 
       {/* <SmartMapView style={{ flex: 1 }} apiKey={SMARTMAP_API_KEY} /> */}
@@ -23,8 +26,9 @@ export default function Map() {
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
-    backgroundColor: theme.LT_GREY_COLOR,
+    width: "100vw",
+    height: "100vh",
+    position: "relative",
   },
+  image: { width: 300, height: 500 },
 });
