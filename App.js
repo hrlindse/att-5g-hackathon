@@ -7,6 +7,11 @@ import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 // import { Barometer } from "expo-sensors";
 // import Barometer from "react-native-barometer";
 import Map from "./components/Map";
+import Home from "./components/Home";
+import Filters from "./components/navigation/Filters";
+import Menu from "./components/menu/Menu";
+import SOS from "./components/SOS";
+import Login from "./components/login/Login";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -73,18 +78,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Journey test page!</Text>
       <StatusBar style="auto" />
-      <Map></Map>
+      <Login></Login>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
+  container: {},
 });
