@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, Button, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
-import { Text, View } from "react-native";
 import theme from "../../assets/styles/theme.style.js";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 export default function SOSButton() {
   return (
@@ -32,5 +33,6 @@ const styles = StyleSheet.create({
     color: theme.FONT_COLOR_BUTTON,
     fontSize: 16,
     fontWeight: "bold",
+    backgroundColor: "none",
   },
 });
