@@ -6,6 +6,7 @@ import { initializeApp, getApps } from "firebase/app";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
 // import { Barometer } from "expo-sensors";
 // import Barometer from "react-native-barometer";
+import Map from "./components/Map";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -74,20 +75,8 @@ export default function App() {
     <View style={styles.container}>
       <Text>Journey test page!</Text>
       <StatusBar style="auto" />
-      <Text>Barometer:</Text>
-      {/* <Text>Pressure: {pressure * 100} Pa</Text> */}
-      {/* <Text>Vertical speed: {barVerticalSpeed}</Text> */}
-      <Text>
-        Relative Altitude:{" "}
-        {/* {Platform.OS === "ios"
-          ? `${relativeAltitude} m`
-          : `Only available on iOS`} */}
-      </Text>
-      <View style={styles.buttonContainer}>
-        {/* <TouchableOpacity onPress={_toggle} style={styles.button}>
-          <Text>Toggle</Text>
-        </TouchableOpacity> */}
-      </View>
+      <Map></Map>
+      <script src="https://s3-eu-west-1.amazonaws.com/steerpath-web-sdk/releases/core/3.3.3/steerpath-3.3.3.min.js"></script>
     </View>
   );
 }
