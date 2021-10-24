@@ -1,13 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import {
-  FIREBASE_API_KEY,
-  FIREBASE_SENDER_ID,
-  FIREBASE_APP_ID,
-} from "react-native-dotenv";
-import { initializeApp } from "firebase/app";
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { FIREBASE_API_KEY, FIREBASE_SENDER_ID, FIREBASE_APP_ID } from "@env";
+import { initializeApp, getApps } from "firebase/app";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import { Barometer } from "expo-sensors";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -20,8 +17,8 @@ const firebaseConfig = {
   appId: FIREBASE_APP_ID,
 };
 
-if (!firebaseConfig) {
-  initializeApp(firebaseConfig);
+if (getApps().length === 0) {
+  const app = initializeApp(firebaseConfig);
 }
 
 // auth state listener
@@ -48,10 +45,57 @@ onAuthStateChanged(auth, (user) => {
 });
 
 export default function App() {
+  const [data, setData] = useState({});
+
+  // Subscribe for updates to the barometer.
+  useEffect(() => {
+    _toggle();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      _unsubscribe();
+    };
+  }, []);
+
+  const _toggle = () => {
+    if (this._subscription) {
+      _unsubscribe();
+    } else {
+      _subscribe();
+    }
+  };
+
+  const _subscribe = () => {
+    this._subscription = Barometer.addListener((barometerData) => {
+      setData(barometerData);
+    });
+  };
+
+  const _unsubscribe = () => {
+    this._subscription && this._subscription.remove();
+    this._subscription = null;
+  };
+  const { pressure = 0, relativeAltitude = 0, verticalSpeed = 0 } = data;
+
   return (
     <View style={styles.container}>
       <Text>Journey test page!</Text>
       <StatusBar style="auto" />
+      <Text>Barometer:</Text>
+      <Text>Pressure: {pressure * 100} Pa</Text>
+      <Text>Vertical speed: {verticalSpeed}</Text>
+      <Text>
+        Relative Altitude:{" "}
+        {Platform.OS === "ios"
+          ? `${relativeAltitude} m`
+          : `Only available on iOS`}
+      </Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={_toggle} style={styles.button}>
+          <Text>Toggle</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
