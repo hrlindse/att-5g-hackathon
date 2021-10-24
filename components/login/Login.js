@@ -34,6 +34,26 @@ export default function Login() {
     return <CarouselItem data={item} />;
   }
 
+  // function getPagination() {
+  //   const { entries, activeSlide } = useState;
+  //   return (
+  //     <Pagination
+  //       carouselRef={carousel}
+  //       tappableDots="true"
+  //       dotsLength={carouselItems.length}
+  //       activeDotIndex={activeSlide}
+  //       dotStyle={{
+  //         width: 15,
+  //         height: 15,
+  //         borderRadius: 10,
+  //         marginHorizontal: -5,
+  //         backgroundColor: theme.SECONDARY_COLOR,
+  //       }}
+  //       inactiveDotOpacity={0.5}
+  //     />
+  //   );
+  // }
+
   return (
     <View style={styles.container}>
       <View style={commonStyles.topBarContainer}>
@@ -56,16 +76,8 @@ export default function Login() {
           sliderWidth={sliderWidth}
           itemWidth={itemWidth}
           onSnapToItem={(index) => setActiveSlide(index)}
+          loop="true"
         />
-        {/* <CarouselComp
-          style={styles.carouselComp}
-          layout="default"
-          ref={isCarousel}
-          data={carouselItems}
-          renderItem={CarouselItem}
-          sliderWidth={sliderWidth}
-          itemWidth={itemWidth}
-        /> */}
         <Pagination
           carouselRef={carousel}
           tappableDots="true"
@@ -80,6 +92,15 @@ export default function Login() {
           }}
           inactiveDotOpacity={0.5}
         />
+        {/* <CarouselComp
+          style={styles.carouselComp}
+          layout="default"
+          ref={isCarousel}
+          data={carouselItems}
+          renderItem={CarouselItem}
+          sliderWidth={sliderWidth}
+          itemWidth={itemWidth}
+        /> */}
       </View>
 
       <View style={styles.bottom}>
