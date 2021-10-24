@@ -11,9 +11,15 @@ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 import expo.modules.ReactActivityDelegateWrapper;
 
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
+      //added for react-navigation
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(null);
+      }
     // Added automatically by Expo Config
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
