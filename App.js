@@ -76,7 +76,6 @@ export default function App() {
       <Text>Journey test page!</Text>
       <StatusBar style="auto" />
       <Map></Map>
-      <script src="https://s3-eu-west-1.amazonaws.com/steerpath-web-sdk/releases/core/3.3.3/steerpath-3.3.3.min.js"></script>
     </View>
   );
 }
